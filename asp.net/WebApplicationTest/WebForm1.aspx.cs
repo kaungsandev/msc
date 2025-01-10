@@ -13,11 +13,17 @@ namespace WebApplicationTest
         {
 
         }
+        protected void validateData()
+        {
 
+        }
         protected void btnExport_Click(object sender, EventArgs e)
         {
             // Capture the data from the form
-            string name = TextBox1.Text;
+            string name = InputTextName.Text;
+            string gender = InputRadioGender.SelectedValue;
+            string city = InputDropDownCity.SelectedValue;
+            string text = InputTextAreaBio.Text;
 
             if (!string.IsNullOrEmpty(name))
             {

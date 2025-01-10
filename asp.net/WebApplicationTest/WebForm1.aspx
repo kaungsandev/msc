@@ -36,13 +36,15 @@
         }
 
         .porfolio-form-field {
+            padding: 10px;
             display: grid;
             grid-template-columns: repeat(2, 1fr);
         }
 
         .text-area {
-            width: 100%;
-            height: 200px;
+            border: solid 1px grey;
+            border-radius: 6px;
+            padding: 10px;
         }
 
         .input-text {
@@ -50,6 +52,13 @@
             height: 36px;
             border: solid 1px grey;
             border-radius: 6px;
+            padding-left: 10px;
+        }
+        .btn-primary{
+            column-span: all;
+            padding: 10px;
+            width: 100%;
+            height: 40px;
         }
     </style>
 </head>
@@ -78,25 +87,44 @@
                         alt="avatar" />
                     <div>
                         <p>Upload Profile Photo</p>
-                        <input id="File1" type="file" accept="image/*" onchange="previewProfileImage(this)" />
+                        <asp:FileUpload ID="FileUploadProfileImage" runat="server"
+                            onchange="previewProfileImage(this)"
+                            accept="image/*" />
+
                     </div>
 
 
                 </div>
                 <div class="porfolio-body">
-                    <p>Biography</p>
                     <div class="porfolio-form-field">
-                        <p>Name</p>
-                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                        <asp:Label ID="InputLabelName" runat="server" Text="Name"></asp:Label>
+                        <asp:TextBox ID="InputTextName" runat="server" CssClass="input-text"></asp:TextBox>
                     </div>
-                    <textarea class="text-area" placeholder="Write your bio" id="TextArea1" cols="20" name="S1" rows="2"></textarea>
+                    <div class="porfolio-form-field">
+                        <asp:Label ID="InputLabelGender" runat="server" Text="Select your gender"></asp:Label>
+                        <asp:RadioButtonList ID="InputRadioGender" runat="server">
+                            <asp:ListItem Value="male" Text="Male"></asp:ListItem>
+                            <asp:ListItem Value="female" Text="Female"></asp:ListItem>
+                        </asp:RadioButtonList>
+                    </div>
+                    <div class="porfolio-form-field">
+                        <asp:Label ID="InputLabelCity" runat="server" Text="Where do you live ?"></asp:Label>
+                        <asp:DropDownList ID="InputDropDownCity" runat="server">
+                            <asp:ListItem Value="0" Selected="True" Text="Select City" />
+                            <asp:ListItem Value="Yangon" Text="Yangon" />
+                            <asp:ListItem Value="Mandalay" Text="Mandalay" />
+                            <asp:ListItem Value="Pathein" Text="Pathein" />
+                            <asp:ListItem Value="Taunggyi" Text="Taunggyi" />
+                        </asp:DropDownList>
+                    </div>
+                    <div class="porfolio-form-field">
+                        <asp:Label ID="Label1" runat="server" Text="Fill Your bio"></asp:Label>
+                        <asp:TextBox ID="InputTextAreaBio" runat="server" TextMode="MultiLine" CssClass="text-area" Rows="20" Columns="100"></asp:TextBox>
+                    </div>
                 </div>
+                <asp:Button ID="btnExport" runat="server" CssClass="btn-primary" Text="Export Data" OnClick="btnExport_Click" />
             </div>
-
-
-
             <div class="image-gallery">
-
                 <img class="show-case-image"
                     src="https://api.dicebear.com/9.x/open-peeps/svg?seed=George"
                     alt="avatar" />
@@ -119,9 +147,8 @@
                     src="https://api.dicebear.com/9.x/open-peeps/svg?seed=George"
                     alt="avatar" />
             </div>
-
-            <asp:Button ID="btnExport" runat="server" Text="Export Data" OnClick="btnExport_Click" />
         </div>
+        
     </form>
 
 </body>
