@@ -78,7 +78,7 @@
             }
         }
     </script>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" enctype="multipart/form-data">
         <div class="container">
             <div class="porfolio">
                 <div class="porfolio-form-field">

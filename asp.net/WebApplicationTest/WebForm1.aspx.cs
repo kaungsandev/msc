@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -23,15 +25,29 @@ namespace WebApplicationTest
             string name = InputTextName.Text;
             string gender = InputRadioGender.SelectedValue;
             string city = InputDropDownCity.SelectedValue;
-            string text = InputTextAreaBio.Text;
+            string bio = InputTextAreaBio.Text;
+
+          
+            string path = Server.MapPath("~/uploads/");
+            string extension = Path.GetExtension(FileUploadProfileImage.FileName).ToLower();
+            string profileImage = "profileImage"+extension;
+            FileUploadProfileImage.SaveAs(path + profileImage);
+
 
             if (!string.IsNullOrEmpty(name))
             {
-                string TextData = $"Name: {name}";
+                string fileName = DateTime.Now.ToString();
+                string TextData = $"" +
+                    $"Name: {name}" + '\n'+
+                    $"Gender: {gender}" + '\n' +
+                    $"City: {city}" + '\n' +
+                    $"Biography:"+"\n"+$"{bio}" +
+                    $"profile image:" + "\n" +$"{profileImage}";
 
                 Response.Clear();
                 Response.ContentType = "text/plain";
-                Response.AddHeader("Content-Disposition", "attachment; filename=data.txt");
+                Response.AddHeader("Content-Disposition", "attachment; " +
+                    $"filename={fileName}.txt");
 
                 Response.Write(TextData);
                 Response.End();
