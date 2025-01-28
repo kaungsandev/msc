@@ -15,10 +15,6 @@ namespace WebApplicationTest
         {
 
         }
-        protected void validateData()
-        {
-
-        }
         protected void btnExport_Click(object sender, EventArgs e)
         {
             // Capture the data from the form
@@ -46,7 +42,7 @@ namespace WebApplicationTest
 
 
                     // Read the uploaded file into a byte array
-                    byte[] imageBytes = FileUploadProfileImage.FileBytes;
+                    byte[] imageBytes = FileUploadProfileImage.x;
                     // Convert the byte array to a Base64 string
                     profileBase64Image = Convert.ToBase64String(imageBytes);
 
@@ -105,8 +101,7 @@ namespace WebApplicationTest
             }
 
             if (!string.IsNullOrEmpty(name))
-            {
-
+            {   
                 // Text File Approach
                 //string fileName = DateTime.Now.ToString();
                 //string TextData = $"" +
@@ -124,9 +119,6 @@ namespace WebApplicationTest
                 //Response.Write(TextData);
                 //Response.End();
 
-
-               
-               
 
                 // HTML file approach
                 string fileName = DateTime.Now.ToString("yyyyMMddHHmmss"); // Format file name for safe use
