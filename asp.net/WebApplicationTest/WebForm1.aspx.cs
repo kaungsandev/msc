@@ -42,10 +42,10 @@ namespace WebApplicationTest
 
 
                     // Read the uploaded file into a byte array
-                    byte[] imageBytes = FileUploadProfileImage.x;
+                    byte[] imageBytes = new byte[FileUploadProfileImage.PostedFile.ContentLength];
                     // Convert the byte array to a Base64 string
                     profileBase64Image = Convert.ToBase64String(imageBytes);
-
+                    
                 }
                 catch (Exception)
                 {
