@@ -51,8 +51,21 @@ namespace AssignmentQ1
 
             string email = Request.QueryString["email"];
             List<string> votedUsers = Session["voted_users"] as List<string>;
+            List<string> registeredUser = Session["registered_user"] as List<string>;
 
-            if(votedUsers == null)
+            if (registeredUser == null)
+            {
+                Response.Redirect("VotingRegister.aspx");
+            }
+            else
+            {
+                if (registeredUser.Contains(email) == false )
+                {
+                    Response.Redirect("VotingRegister.aspx");
+                }
+            }
+
+            if (votedUsers == null)
             {
                 votedUsers = new List<string>();
                 Session["voted_users"] = votedUsers;
@@ -96,11 +109,6 @@ namespace AssignmentQ1
             }
              
             
-        }
-
-        protected void Button2_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("VotingPage.aspx");
         }
     }
 }

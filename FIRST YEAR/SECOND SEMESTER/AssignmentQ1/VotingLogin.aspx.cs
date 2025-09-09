@@ -23,7 +23,25 @@ namespace AssignmentQ1
             else
             {
                 string email = TBEmail.Text;
-                Response.Redirect($"VotingPage.aspx?email={email}");
+
+                List<string> registeredUser = Session["registered_user"] as List<string>;
+
+                if(registeredUser == null)
+                {
+                    Response.Redirect("VotingRegister.aspx");
+                }
+                else
+                {
+                    if(registeredUser.Contains(email))
+                    {
+                        Response.Redirect($"VotingPage.aspx?email={email}");
+                    }
+                }
+
+                Response.Redirect("VotingRegister.aspx");
+
+
+
             }
         }
     }

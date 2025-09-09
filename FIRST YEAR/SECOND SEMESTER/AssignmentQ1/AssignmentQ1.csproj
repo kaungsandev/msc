@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="StudentRegistrantionSystem.aspx" />
     <Content Include="VotingPage.aspx" />
+    <Content Include="VotingRegister.aspx" />
     <Content Include="Web.config" />
     <Content Include="Question1OnlineConverter.aspx" />
     <Content Include="StudentData.aspx" />
@@ -108,6 +109,13 @@
     </Compile>
     <Compile Include="VotingLogin.aspx.designer.cs">
       <DependentUpon>VotingLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VotingRegister.aspx.cs">
+      <DependentUpon>VotingRegister.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VotingRegister.aspx.designer.cs">
+      <DependentUpon>VotingRegister.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
